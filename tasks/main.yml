@@ -7,12 +7,12 @@
 
 - name: Install other node versions via n
   shell: . n {{item}}
-  with_items: {{ node_versions }}
+  with_items: node_versions
 
 - name: Install current node version via n
   shell: . n {{item}}
-  with_items: {{ node_version }}
+  with_items: node_version
 
 - name: Install npm package(s)
   npm: name={{ item }} global=yes
-  with_items: {{ npm_modules }}
+  with_items: npm_modules
