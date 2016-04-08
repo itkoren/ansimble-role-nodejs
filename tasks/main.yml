@@ -1,0 +1,18 @@
+---
+- name: Install node
+  homebrew: name=node state=latest
+
+- name: Install n node manager
+  npm: name=n global=yes
+
+- name: Install other node versions via n
+  shell: . n {{item}}
+  with_items: node_versions
+
+- name: Install current node version via n
+  shell: . n {{item}}
+  with_items: node_version
+
+- name: Install npm package(s)
+  npm: name={{ item }} global=yes
+  with_items: npm_modules
